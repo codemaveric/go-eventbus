@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"log"
 
-	"github.com/codemaveric/go-eventbus/pkg/eventbus"
+	"github.com/codemaveric/go-eventbus/eventbus"
 
 	"github.com/segmentio/kafka-go"
 )
