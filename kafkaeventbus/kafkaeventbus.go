@@ -57,13 +57,13 @@ func (kb *KafkaEventBus) process(event eventbus.Event, r *kafka.Reader) {
 	for {
 		msg, err := r.FetchMessage(ctx)
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 			continue
 		}
 		log.Printf("message at topic/partition/offset %v/%v/%v: %s = %s\n", msg.Topic, msg.Partition, msg.Offset, string(msg.Key), string(msg.Value))
 		err = json.Unmarshal(msg.Value, &event)
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 			continue
 		}
 		handlers := kb.subscriberManager.GetSubscriptionHandlers(event.GetName())
